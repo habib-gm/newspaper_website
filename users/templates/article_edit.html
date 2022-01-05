@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% if user.is_authenticated %}
 {% block title%} Edit {{object.title}} {% endblock title %}
 
 {% load crispy_forms_tags %}
@@ -10,3 +11,4 @@
         <button class="btn btn-info ml- " type="submit">Update</button>
     </form>
 {% endblock content %}
+{% endif %}

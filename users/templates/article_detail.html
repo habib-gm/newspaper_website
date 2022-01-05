@@ -8,9 +8,13 @@
         <p>by {{ object.author }} | {{ object.date }}</p>
         <p>{{ object.body }}</p>
     </div>
+    {% if user.is_authenticated  %}
     <p> 
         <a href="{% url 'article_edit' article.pk %}">Edit</a> |
         <a href="{% url 'article_delete' article.pk %}">Delete</a>
     </p>
+    <br>
+    {% endif %}
+
     <p> Back to <a href="{% url 'article_list' %}">All Articles</a>.</p>
 {% endblock content %}
