@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'django.contrib.admin',
+    'articles.apps.ArticlesConfig',
     
     'crispy_forms',
     
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = 'users.customUser'
 CRISPY_TEMPLATE_PACK = 'bootstrap'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
