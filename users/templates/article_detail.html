@@ -1,5 +1,6 @@
-{% extends 'base.html' %}
 
+
+{% extends 'base.html' %}
 {% block title%} {{object.title}} {% endblock title %}
 
 {% block content %}
@@ -7,6 +8,19 @@
         <h2>{{ object.title }}</h2>
         <p>by {{ object.author }} | {{ object.date }}</p>
         <p>{{ object.body }}</p>
+        {% for cust in object.saw_users.all %}
+            <p>This Paragraph has been seen by customer with ID: {{ cust.id }} who posted 
+
+                {{ object.userPostCount }}
+
+                {% if user.id in userPostCount %}
+                    Hellos
+                {% endif %}
+            </p>
+        {% endfor %}
+        {{ latest}}
+        
+
     </div>
     {% if user.is_authenticated  %}
     <p> 
@@ -15,6 +29,17 @@
     </p>
     <br>
     {% endif %}
+    <div style = "display: flex; margin-top: 10px; align-items: flex-start; background-color: gray; padding: 5px; flex-direction: column">
+
+    {% for comment in article.comments.all %}
+                    <p>
+                    commented by :
+                    <span class="font-weight-bold">{{ comment.author }} &middot;</span><br>
+                    comment:
+                    {{ comment }}
+                    </p>
+    {% endfor %}
+    </div>
 
     <p> Back to <a href="{% url 'article_list' %}">All Articles</a>.</p>
 {% endblock content %}

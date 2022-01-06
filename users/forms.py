@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm, UserModel, UsernameField
 from django.forms.fields import EmailField
-from django.utils.translation import gettext, gettext_lazy as _
 from .models import CustomUser
 
 class CustomUserCreationForm(UserCreationForm):

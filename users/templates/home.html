@@ -1,11 +1,90 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock title %}
+
 {% block content %}
+    <div class="container-fluid">
+        <h1> Wellcome to Newspaper app </h1>
+        <p class="lead">A Newspaper website built with Django backend.</p>
+        {% if not user.is_authenticated %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href = "{% url 'signup' %}"> Sign Up </a>
+        {% else %}
+        {{ user.username }}
+        {% endif %}
+    </div>
+
     <div class="jumbotron">
-        <h1 class="display- ">Newspaper app</h1>
-        <p class="lead">A Newspaper website built with Django.</p>
+        <h1 class="display- ">Newest Articles</h1>
+        {% for article in Article %}
+        <div> 
+            <h2> {{article.title}}</h2>
+            <div>
+                <p> {{article.body}}</p>
+            </div>
+        </div>
+        {% endfor %}
+
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="{% url 'article_list' %}" role="button">View All Articles</a>
+            <a class="btn btn-primary btn-lg" href="{% url 'article_list' %}" role="button">More</a>
         </p>
     </div>
+
+    <div class="jumbotron">
+        <h1 class="display- ">Most Seen Articles</h1>
+        {% for article in Article %}
+        <div> 
+            <h2> {{article.title}}</h2>
+            <div>
+                <p> {{article.body}}</p>
+            </div>
+        </div>
+        {% endfor %}
+
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="{% url 'article_list' %}" role="button">More</a>
+        </p>
+    </div>
+
+    <div class="jumbotron">
+        <h1 class="display- ">Most Commented Articles</h1>
+        {% for article in Article %}
+        <div> 
+            <h2> {{article.title}}</h2>
+            <div>
+                <p> {{article.body}}</p>
+            </div>
+        </div>
+        {% endfor %}
+
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="{% url 'article_list' %}" role="button">more</a>
+        </p>
+    </div>
+
+    <a class="btn btn-primary btn-lg" href="{% url 'article_list' %}" role="button">View All Articles</a>
+
+    <div class="jumbotron">
+        <h1 class="display- ">Other Services</h1>
+        {% for services in Services %}
+        <div> 
+            <h2> {{Service.title}}</h2>
+            <div>
+                <p> {{Services.body}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="jumbotron">
+        <h1 class="display- ">We Work with</h1>
+        {% for org in Organizations %}
+        <div> 
+            <h2> {{org.title}}</h2>
+            <div>
+                <p> {{org.body}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
 {% endblock content %}
